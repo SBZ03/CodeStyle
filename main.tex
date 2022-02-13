@@ -1,0 +1,263 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{authblk}
+\usepackage{cite}
+\usepackage[usenames]{color}
+
+\title{\textbf{CodeStyle}}
+\author{ИА-031 Шолохов Владислав}
+\affil{github: @SBZ03; email: sholokhov.02@list.ru}
+\date{February 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Введение}
+Code style как стандарт разработки. Code style помогает обеспечивать линейное развитие проекта, значительно ускоряет адаптацию новых сотрудников и, в целом, формирует и воспитывает культуру разработки.\cite{1}
+
+\section{\underline{Язык программирования C/C++}}
+
+\subsection{Отступы и пробелы}
+Для отступа используется табуляцию (размер таба 4 пробела).\\
+\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{int} main()\{\\
+2 \qquad ...\\
+3 \qquad \textcolor{blue}{return} 0;\\
+4 \}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Операторы и операнды разделяются пробелом.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{int} a = (b + c) * e;\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Перед открывающей скобкой и после знаков препинания используется пробел.\\
+\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{for} (...; ...; ...)\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Перед двоеточием в конце строки(если оно нужно) пробел не ставится.
+\end{lstlisting}
+
+\subsection{Объявление переменных}
+Переменным даются описательные имена, такие как firstName или counter.\\
+\\
+Избегаются однобуквенные названия вроде x или c, за исключением итераторов вроде i,j,k.\\
+\\
+Если переменная используется лишь внутри определенного if, то делайте её локальной, объявляя в том же блоке кода, а не глобальной.\\
+\\
+Выбирается подходящий тип данных для ваших переменных. Если переменная содержит лишь целые числа, то она определяется как int, а не double.\\
+\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{int} counter;\\
+2 \textcolor{blue}{double} average;\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Используется текстовая строка, стандартная для C++.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 string str = "Hello there;\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Если определенная константа часто используется в коде, то она обохначается как const и мы всегда ссылаемся на данную константу, а не на её значение.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{const int} VOTINGAGE = 18;\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\end{lstlisting}
+
+\subsection{Функции}
+Между функциями и группами выражений остаётся пустая строка.\\
+\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{void} fun1(...)\{\\
+2 \qquad ...\\
+3 \}\\
+4 \qquad\qquad\qquad//пустая строка\\
+5 \textcolor{blue}{void} fun2(...)\{\\
+6 \qquad ...\\
+7 \}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Имена функций должны быть логическими и записаны с нижнего регистра, но могут быть записаны в смешанном регистре.\\
+\\
+Порядок их написания не должен вызывать ошибок, функции должны быть записаны в логическом порядке\\
+\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1  \textcolor{blue}{int} createMatrix(...)\{\\
+2  \qquad ...\\
+3  \}\\
+4 \\
+5  \textcolor{blue}{void} \textcolor{yellow}{deleteMatrix}(...)\{\\
+6  \qquad ...\\
+7  \}\\
+8 \\
+9  \textcolor{blue}{void} printMatrix(...)\{\\
+10 \qquad ...\\
+11 \qquad \textcolor{yellow}{deleteMatrix}(...);\\
+12 \}\\
+\\
+\hline
+\end{tabular}\\
+\end{lstlisting}
+
+\subsection{Операторы управления}
+\begin{lstlisting}
+Итерационные операторы(while, for, do/while).\\
+Используются отступы и переходы на новую строку, если есть в этом необходимость. Для счётчика используются итераторы вроде i,j,k.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{while} (i < N)\{\\
+2 \qquad ...\\
+3 \}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{for} (int j = 0; j < N; j++)\{\\
+2 \qquad ...\\
+3 \}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{do}\{\\
+2 \qquad ...\\
+3 \} while(k < N);\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Операторы выбора(if else,switch).
+Используются отступы и переходы на новую строку, если есть в этом необходимость. Для if фигурные скобки ставятся в любом случае.
+Для else фигурные скобки ставятся случае если действий более одного.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{if} (x > y)\{\\
+2 \qquad cout << "Первое число больше";\\
+3 \} \textcolor{blue}{else} cout << "Второе число больше";
+}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{switch} (x)\{\\
+2 \qquad \textcolor{blue}{case} 1:\\
+3 \qquad\qquad ...;\\
+4 \qquad\qquad continue;\\
+5 \qquad \textcolor{blue}{case} 2:\\
+6 \qquad\qquad ...;\\
+7 \qquad\qquad break;\\
+8 \} 
+}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\end{lstlisting}
+
+\subsection{Структуры}
+\begin{lstlisting}
+Cтруктуры, объявляются с помощью typedef. Сами названия пишутся с большой буквы.\\
+\\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{typedef struct} Node \{\\
+2 \qquad\textcolor{blue}{int} vaule;\\
+3 \qquad\textcolor{blue}{struct} Node *left;\\
+4 \qquad\textcolor{blue}{struct} Node *right;\\
+5 \} Node;
+\\
+\hline
+\end{tabular}\\
+\\\\
+\end{lstlisting}
+
+\subsection{Классы}
+\begin{lstlisting}
+ Отделяйте ваши объекты, делая все поля данных в вашем классе private. Всегда размещайте объявления классов и их частей в собственные файлы, ClassName.h.\\
+ \\\\
+\begin{tabular}{ | l | }
+\hline
+\\
+1 \textcolor{blue}{class} MyClass\{\\
+2 \qquad \textcolor{blue}{public}:\\
+3 \qquad\qquad \textcolor{blue}{int} value;\\
+4 \qquad \textcolor{blue}{private}:\\
+5 \qquad\qquad \textcolor{blue}{int} getValue()\{\\
+6 \qquad\qquad\qquad return value;\\
+7 \qquad\qquad\}\\
+8 \} 
+}\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+\end{lstlisting}
+
+\section{Вывод}
+Я освоил LaTex и научился им пользоваться. Составил CodeStayle.
+
+\newpage
+
+\begin{thebibliography}{}
+\bibitem{1}Code style как стандарт разработки. - URL:\\           [https://habr.com/ru/company/manychat/blog/468953/]
+\bibitem{2}Code style как стандарт разработки. - URL:\\           [https://tproger.ru/translations/stanford-cpp-style-guide/]
+\bibitem{3}Code style как стандарт разработки. - URL:\\           [https://habr.com/ru/company/ruvds/blog/574352/]
+\end{thebibliography}
+
+\end{document}
